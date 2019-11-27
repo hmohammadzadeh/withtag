@@ -17,7 +17,11 @@ matrix:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
-   
+    - os: linux
+      dist: trusty
+      sudo: required
+      services: docker
+      language: generic
 
 notifications:
   email: false
@@ -54,18 +58,15 @@ script:
       yarn test
     fi
 # only deploy to github on a merge to the prod branch
-  
 deploy:
  
   deploy:
-  api_key:
-    secure: "CfYEwvYm22rabYXKeRWkrA"
- password: "realoption123"
-  file_glob: true
- 
+  provider: releases
+  user: "hmohammadzadeh"
+  password: "realoption123"
   skip_cleanup: true
+ 
   on:
-
     tags: true
     
 before_cache:
@@ -73,3 +74,7 @@ before_cache:
 
 # only run this script on pull requests and merges into 
 # the 'master' and 'prod' branches
+branches:
+  only:
+  - master
+  - prod
