@@ -58,8 +58,8 @@ script:
 deploy:
  
   deploy:
-  provider: releases
-  user: "hmohammadzadeh"
+  api_key:
+    secure: "CfYEwvYm22rabYXKeRWkrA"
  password: "realoption123"
   file_glob: true
  
