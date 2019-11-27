@@ -1,0 +1,236 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./W3.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image:url("ghaz.png");
+  min-height: 100%;
+  margin-top: 40px;
+}
+
+.w3-bar .w3-button {
+  padding: 10px;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  
+}
+#myNavbar{
+    padding: 10px;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+ 
+}
+@font-face {
+       font-family: myfont;
+       src:url('IRANSans.ttf');
+   }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 0px;}
+.iranfont{
+    font-family: 'myfont'
+}
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button iranfont">&#1575;&#1601;&#1578;&#1582;&#1575;&#1585;&#1575;&#1578;</a>
+      <!-- <a href="#team" class="w3-bar-item w3-button iranfont" ><i class="fa fa-user"></i> &#1607;&#1605;&#1705;&#1575;&#1585;&#1575;&#1606;</a> -->
+      <a href="#work" class="w3-bar-item w3-button iranfont"><i class="fa fa-th"></i> &#1585;&#1587;&#1575;&#1604;&#1578;</a>
+    
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<!-- <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav> -->
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-topright w3-text" style="padding:48px">
+          <!-- <span  style="font-family: 'iranSans';color: red;margin-top: 2px" class="w3-jumbo w3-hide-small">&#1607;&#1605;&#1740;&#1588;&#1607; &#1576;&#1575; &#1588;&#1605;&#1575; &#1607;&#1587;&#1578;&#1740;&#1605;</span><br>
+                 </div>  -->
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">ABOUT THE COMPANY</h3>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+      <!-- <div class="w3-container w3-light-grey" style="padding:128px 16px">
+        <div class="w3-row-padding">
+          <div class="w3-col m6">
+            <h3>We know design.</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
+            <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Works</a></p>
+          </div>
+          <div class="w3-col m6">
+            <img class="w3-image w3-round-large" src="download.jpg" alt="Buildings" width="700" height="394">
+          </div>
+        </div>
+      </div> -->
+
+<!-- Team Section -->
+          <!-- <div class="w3-container" style="padding:128px 16px" id="team">
+            <h3 class="w3-center">THE TEAM</h3>
+            <p class="w3-center w3-large">The ones who runs this company</p>
+            <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="./download.jpg" alt="John" style="width:100%">
+                  <div class="w3-container">
+                    <h3>John Doe</h3>
+                    <p class="w3-opacity">CEO & Founder</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="./download.jpg" alt="Jane" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Anja Doe</h3>
+                    <p class="w3-opacity">Art Director</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="download.jpg" alt="Mike" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Mike Ross</h3>
+                    <p class="w3-opacity">Web Designer</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+              <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-card">
+                  <img src="download.jpg" alt="Dan" style="width:100%">
+                  <div class="w3-container">
+                    <h3>Dan Star</h3>
+                    <p class="w3-opacity">Designer</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+<!-- Promo Section "Statistics" -->
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+  <h3 class="w3-center iranfont">&#1583;&#1585;&#1576;&#1575;&#1585;&#1607; &#1605;&#1575;</h3>
+
+  <div class="w3-row-padding iranfont" style="margin-top:64px;text-align:center">&#1607;&#1605;&#1607; &#1670;&#1740;&#1586; &#1575;&#1586; &#1740;&#1705; &#1580;&#1585;&#1602;&#1607; &#1583;&#1585; &#1605;&#1594;&#1586; &#1588;&#1605;&#1575; &#1588;&#1585;&#1608;&#1593; &#1605;&#1740; &#1588;&#1608;&#1583;. &#1575;&#1740;&#1583;&#1607; &#1583;&#1585; &#1584;&#1607;&#1606; &#1588;&#1605;&#1575; &#1588;&#1705;&#1604; &#1605;&#1740; &#1711;&#1740;&#1585;&#1583;&#1548; &#1578;&#1582;&#1740;&#1604; &#1576;&#1607; &#1705;&#1605;&#1705; &#1588;&#1605;&#1575; &#1605;&#1740; &#1570;&#1740;&#1583; &#1608; &#1575;&#1740;&#1583;&#1607; &#1585;&#1575; &#1576;&#1607; &#1608;&#1575;&#1602;&#1593;&#1740;&#1578;&#1740; &#1578;&#1576;&#1583;&#1740;&#1604; &#1605;&#1740; &#1705;&#1606;&#1583; &#1705;&#1607; &#1588;&#1605;&#1575; &#1582;&#1608;&#1575;&#1587;&#1578;&#1607; &#1575;&#1740;&#1583;. &#1576;&#1575; &#1711;&#1584;&#1588;&#1578; &#1586;&#1605;&#1575;&#1606; &#1608; &#1578;&#1604;&#1575;&#1588; &#1605;&#1583;&#1575;&#1608;&#1605; &#1575;&#1740;&#1606; &#1608;&#1575;&#1602;&#1593;&#1740;&#1578; &#1578;&#1576;&#1583;&#1740;&#1604; &#1576;&#1607; &#1583;&#1575;&#1587;&#1578;&#1575;&#1606; &#1605;&#1608;&#1601;&#1602;&#1740;&#1578; &#1588;&#1605;&#1575; &#1605;&#1740; &#1588;&#1608;&#1583;!
+
+    &#1570;&#1602;&#1575;&#1740; &#1585;&#1587;&#1608;&#1604; &#1594;&#1575;&#1586;&#1740;&#1575;&#1606;&#1740; &#1576;&#1575; &#1662;&#1588;&#1578;&#1608;&#1575;&#1606;&#1607; &#1740;&#1705; &#1593;&#1605;&#1585; &#1578;&#1604;&#1575;&#1588; &#1582;&#1575;&#1604;&#1589;&#1575;&#1606;&#1607; &#1608; &#1589;&#1575;&#1583;&#1602;&#1575;&#1606;&#1607; &#1583;&#1585; &#1711;&#1605;&#1585;&#1705;&#1575;&#1578; &#1705;&#1604; &#1705;&#1588;&#1608;&#1585; &#1608; &#1584;&#1582;&#1740;&#1585;&#1607; &#1578;&#1580;&#1585;&#1576;&#1740;&#1575;&#1578; &#1575;&#1585;&#1586;&#1606;&#1583;&#1607; &#1583;&#1585; &#1575;&#1740;&#1606; &#1581;&#1608;&#1586;&#1607;&#1548; &#1578;&#1602;&#1585;&#1740;&#1576;&#1575; 18 &#1587;&#1575;&#1604; &#1662;&#1740;&#1588; &#1575;&#1740;&#1583;&#1607; &#1585;&#1575;&#1607; &#1575;&#1606;&#1583;&#1575;&#1586;&#1740; &#1588;&#1585;&#1705;&#1578;&#1740; &#1705;&#1607; &#1576;&#1578;&#1608;&#1575;&#1606;&#1583; &#1578;&#1605;&#1575;&#1605; &#1582;&#1583;&#1605;&#1575;&#1578; &#1578;&#1580;&#1575;&#1585;&#1578; &#1608; &#1575;&#1605;&#1608;&#1585; &#1605;&#1585;&#1576;&#1608;&#1591; &#1576;&#1607; &#1711;&#1605;&#1585;&#1705; &#1585;&#1575; &#1576;&#1607; &#1605;&#1588;&#1578;&#1585;&#1740;&#1575;&#1606; &#1575;&#1585;&#1575;&#1574;&#1607; &#1606;&#1605;&#1575;&#1740;&#1583; &#1583;&#1585; &#1584;&#1607;&#1606; &#1583;&#1575;&#1588;&#1578;&#1606;&#1583; &#1608; &#1583;&#1585; &#1587;&#1575;&#1604; 1378 &#1605;&#1608;&#1601;&#1602; &#1576;&#1607; &#1576;&#1575;&#1586;&#1711;&#1588;&#1575;&#1574;&#1740; &#1576;&#1575;&#1586;&#1585;&#1711;&#1575;&#1606;&#1740; &#1594;&#1575;&#1586;&#1740;&#1575;&#1606;&#1740; &#1711;&#1585;&#1583;&#1740;&#1583;&#1606;&#1583;. &#1581;&#1575;&#1604; &#1662;&#1587; &#1575;&#1586; &#1711;&#1584;&#1588;&#1578; &#1575;&#1740;&#1606; &#1605;&#1583;&#1578;&#1548; &#1605;&#1601;&#1578;&#1582;&#1585;&#1740;&#1605; &#1576;&#1575; &#1575;&#1740;&#1580;&#1575;&#1583; &#1740;&#1705; &#1578;&#1740;&#1605; &#1576;&#1575;&#1578;&#1580;&#1585;&#1576;&#1607;&#1548; &#1582;&#1604;&#1575;&#1602; &#1608; &#1580;&#1608;&#1575;&#1606; &#1608; &#1576;&#1575; &#1575;&#1587;&#1578;&#1601;&#1575;&#1583;&#1607; &#1575;&#1586; &#1575;&#1576;&#1586;&#1575;&#1585; &#1608; &#1585;&#1608;&#1588; &#1607;&#1575;&#1740; &#1606;&#1608;&#1740;&#1606; &#1576;&#1585;&#1606;&#1575;&#1605;&#1607; &#1585;&#1740;&#1586;&#1740; &#1608; &#1705;&#1606;&#1578;&#1585;&#1604; &#1662;&#1585;&#1608;&#1688;&#1607;&#1548; &#1576;&#1575; &#1578;&#1604;&#1575;&#1588; &#1605;&#1583;&#1575;&#1608;&#1605; &#1578;&#1605;&#1575;&#1605;&#1740; &#1607;&#1605;&#1705;&#1575;&#1585;&#1575;&#1606; &#1608; &#1605;&#1583;&#1740;&#1585;&#1575;&#1606; &#1588;&#1585;&#1705;&#1578;&#1548; &#1582;&#1583;&#1605;&#1575;&#1578;&#1740; &#1705;&#1575;&#1605;&#1604;&#1575; &#1578;&#1582;&#1589;&#1589;&#1740; &#1608; &#1588;&#1601;&#1575;&#1601; &#1585;&#1575; &#1576;&#1607; &#1605;&#1588;&#1578;&#1585;&#1740;&#1575;&#1606; &#1582;&#1608;&#1583; &#1575;&#1585;&#1575;&#1574;&#1607; &#1583;&#1607;&#1740;&#1605;.
+    
+    &#1575;&#1605;&#1740;&#1583;&#1608;&#1575;&#1585;&#1740;&#1605; &#1576;&#1575; &#1608;&#1580;&#1608;&#1583; &#1578;&#1740;&#1605;&#1740; &#1578;&#1608;&#1575;&#1606;&#1605;&#1606;&#1583; &#1608; &#1576;&#1575; &#1578;&#1580;&#1585;&#1576;&#1607; &#1608; &#1607;&#1605;&#1670;&#1606;&#1740;&#1606; &#1576;&#1607;&#1585;&#1607; &#1605;&#1606;&#1583;&#1740; &#1575;&#1586; &#1605;&#1588;&#1575;&#1608;&#1585;&#1607; &#1607;&#1605;&#1705;&#1575;&#1585;&#1575;&#1606; &#1602;&#1583;&#1585;&#1578;&#1605;&#1606;&#1583; &#1608; &#1578;&#1608;&#1575;&#1606;&#1605;&#1606;&#1583; &#1582;&#1608;&#1583; &#1576;&#1578;&#1608;&#1575;&#1606;&#1740;&#1605; &#1576;&#1585;&#1575;&#1740; &#1588;&#1605;&#1575; &#1608; &#1576;&#1607; &#1582;&#1608;&#1575;&#1587;&#1578; &#1588;&#1605;&#1575;&#1548; &#1602;&#1587;&#1605;&#1578;&#1740; &#1575;&#1586; &#1583;&#1575;&#1587;&#1578;&#1575;&#1606; &#1605;&#1608;&#1601;&#1602;&#1740;&#1578; &#1588;&#1605;&#1575; &#1585;&#1575; &#1585;&#1594;&#1605; &#1576;&#1586;&#1606;&#1740;&#1605;.
+    
+    &#1578;&#1580;&#1575;&#1585;&#1578; &#1576;&#1575;
+    &#1570;&#1585;&#1575;&#1605;&#1588;  </div>
+
+  <div class="w3-row-padding w3-section">
+    
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Skills Section -->
+
+<!-- Pricing Section -->
+
+<!-- Contact Section -->
+
+
+<!-- Footer -->
+
+<script>
+    window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("myNavbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+</body>
+</html>

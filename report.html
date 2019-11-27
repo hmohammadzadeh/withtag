@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html  style="font-family: 'iranSans';font-size: 12pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>چاپ تعرفه</title>
+  <style>
+    .container{
+      position: sticky;
+      top:0;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 3px;
+      padding: 0.6em 1.2em;
+      background: rgb(14, 139, 255);
+      color: #ffffff;
+      border: 2px solid rgb(14, 139, 255);
+      transition: background 0.2s;
+    }
+
+    .btn:hover, .btn:focus {
+      background:  none;
+      border: 2px solid rgb(14, 139, 255);
+      color: rgb(14, 139, 255);
+    }
+   
+     </style>
+</head>
+<body>
+  <div class="no-print container">
+    <a class="btn" href="#" id="saveAsPdf">Save As PDF</a>
+  </div>
+  
+  <div id="mjRoot">
+     
+
+  </div>
+  <script>
+
+    const ipcRenderer = require('electron').ipcRenderer;
+    const remote=require('electron').remote;
+const mj = require('mjreport');
+
+// Get generated data from main process
+let data = remote.getGlobal('printData');
+
+// Pass report data to MjRenderer to draw report elements
+let renderer = new mj.Renderer(data, 'mjRoot');
+renderer.draw();
+
+ const btnclick5 = document.getElementById('saveAsPdf');
+btnclick5.addEventListener('click', function () {
+  ipcRenderer.send("saveAsPdf", data.metaData.paperType);
+
+})
+  </script>
+</body>
+</html>

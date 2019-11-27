@@ -1,0 +1,374 @@
+<html dir="rtl" lang="fa" style="page-break-before:always ">
+
+<head>
+    <META HTTP-EQUIV=”Content-Type” CONTENT=”text/html; charset=utf-8″>
+
+<body>
+
+    <script src="./node_modules/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="./node_modules/ag-grid-community/dist/styles/ag-grid.css">
+  
+    <link rel="stylesheet" href="./css/fontawesome.min.css">   
+    <link rel="stylesheet" href="./node_modules/ag-grid-community/dist/styles/ag-theme-balham.css">
+    <!-- <button id='enter' type="submit">&#1608;&#1585;&#1608;&#1583;</button> -->
+    <div class="test-header">
+            <img class="no-print" src="toPDF.png" type="submit"  id='enter2'style="margin-bottom: 5px;height: 30px"></img>
+
+        
+
+</div>
+<div>
+        <span dir="rtl" style=" font-size:10px;font-family:myfont;text-align: right;margin-left: 0%;margin-top: 15px;height: 100px;width: 1200px">جانمایی تقریبی در کتاب تعرفه:</span>
+        <span dir="rtl" style=" font-size:10px;font-family:myfont;text-align: right;margin-left: 0%;margin-top: 15px;height: 100px;width: 1200px" id="rootname"></span>
+    <div style="direction:rtl;page-break-before:always;overflow: auto" style="margin-left: 50%;margin-top: 15px" id="myGrid" style="height: 50%;width: 100%" style="direction: rtl"
+        class="ag-theme-balham">
+       </div>
+    </div>
+</body>
+<script src="./js/pdf.js"></script>
+<script src="./js/pdf.worker.js"></script>
+<script>
+
+  
+
+    
+
+    
+
+   var columndefs=[
+
+        {  cellClass: 'cell-wrap-text',  autoHeight: true,  headerName: "\u0634\u0631\u062D \u0627\u0646\u06AF\u0644\u06CC\u0633\u06CC",autoHeight: true, field: "per_eng",filter: 'agTextColumnFilter', width: 400, cellStyle: { direction: "ltr", fontFamily: "TimesNewRoman" ,tooltipField:"per_eng"} },
+
+        
+         {  cellClass: 'cell-wrap-text',autoHeight: true,resizable:true,headerName: "\u062D\u0642\u0648\u0642 \u0648\u0631\u0648\u062F\u06CC",autoHeight: true, field: "tarif_per", width: 125, filter: 'agTextColumnFilter', cellStyle: { direction: "rtl", textAlign: "center", fontFamily:'myfont' } },
+        {cellClass: 'cell-wrap-text',  autoHeight: true,resizable:true,headerName: "\u064E\u0634\u0631\u062D \u062A\u0639\u0631\u0641\u0647",autoHeight: true, field: "per_desc", width: 400, filter: 'agTextColumnFilter', cellStyle: { direction: "rtl", fontFamily: 'myfont' } },
+        {cellClass: 'cell-wrap-text',  autoHeight: true,headerName: "\u06A9\u062F \u062A\u0639\u0631\u0641\u0647",autoHeight: true, field: "code", width:125, filter: 'agTextColumnFilter' },
+        {cellClass: 'cell-wrap-text',  autoHeight: true,headerName: "\u0634\u0645\u0627\u0631\u0647 \u0641\u0635\u0644",autoHeight: true, field: "fasl", width:100, filter: 'agTextColumnFilter' },
+         { cellClass: 'cell-wrap-text',  autoHeight: true,suppresFilter:true, resizable:false,headerName: "\u0627\u0646\u062A\u062E\u0627\u0628",autoHeight: true, field: "select", width: 75,checkboxSelection: true,headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true},
+ 
+         {  cellClass: 'cell-wrap-text', autoHeight: true,hide:true, resizable:false,headerName: "\u0627\u0646\u062A\u062E\u0627\u0628",autoHeight: true, field: "root", width: 75,checkboxSelection: true,headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true}];
+
+   
+
+
+    // specify the data
+
+    
+
+
+    // let the grid sknow which columns and what data to use
+    var gridOptions = {
+        autoHeight: true,
+        
+        enablertl:true,
+        rowData: null,
+        rowSelection: 'multiple'
+        ,
+        defaultColDef: {
+        sortable: true,
+        tooltipComponent: 'customTooltip',
+        rowHeight:275
+    },
+    
+   
+        floatingFilter: true,
+        columnDefs: columndefs,
+       
+        oncellFocused:function(event) { console.log('a row was clicked'); },
+        onrowDoubleClicked:function(event) { console.log('a row was dclicked'); }
+    };
+  
+// add the handler function
+   
+
+
+    // lookup the container we want the Grid to use
+
+    var eGridDiv = document.querySelector('#myGrid');
+
+    // create the grid passing in the div to use together with the columns & data we want to use
+    new agGrid.Grid(eGridDiv, gridOptions);
+  
+    const db = require('electron-db');
+const electron = require('electron');
+ 
+const path = require('path');
+ const location2 = path.join(__dirname, '')
+ document.addEventListener('DOMContentLoaded', function() {
+    const XlsxPopulate = require('xlsx-populate');
+   
+    
+XlsxPopulate.fromFileAsync("./GhazFF.xlsx", { password: 'Pass1234' })
+   .then(workbook => {
+     
+       // Modify the workbook.
+       r = workbook.sheet('Table1').usedRange().value();
+      console.log(r);
+
+dade=[];
+  for (var i = 1; i < r.length; ++i){
+   
+    dade.push({fasl:r[i][2],id: r[i][0], code: r[i][8], per_desc: r[i][3],tarif_per:r[i][9],per_eng:r[i][4],root:r[i][6]})
+
+ }
+ 
+ for (var i = 0; i < dade.length; ++i){ 
+     if (dade[i]['per_desc']!=undefined){
+    dade[i]['per_desc'] =   dade[i]['per_desc'].replace(/x001F/g,' ')
+    dade[i]['per_desc'] =   dade[i]['per_desc'].replace(/x000B/g,' ')
+    dade[i]['per_desc'] =   dade[i]['per_desc'].replace(/x0001/g,' ')
+    dade[i]['per_desc'] =   dade[i]['per_desc'].replace(/x000D/g,' ')
+     }
+     if (dade[i]['root']!=undefined){
+
+    dade[i]['root'] =   dade[i]['root'].replace(/x001F/g,' ')
+    dade[i]['root'] =   dade[i]['root'].replace(/x000B/g,' ')
+    dade[i]['root'] =   dade[i]['root'].replace(/x0001/g,' ')
+    dade[i]['root'] =   dade[i]['root'].replace(/x000D/g,' ')
+    
+
+     }
+    
+ }
+     gridOptions.api.setRowData(dade);
+   //gridOptions.api.sizeColumnsToFit();
+   gridOptions.api.addEventListener('cellFocused', myRowClickedHandler);
+   gridOptions.api.addEventListener('rowDoubleClicked', myRowdoubleClickedHandler);
+   });
+ 
+});
+function myRowdoubleClickedHandler(event) {
+    
+  
+
+
+      var rowindex2= gridOptions.api.getFocusedCell().rowIndex;
+    var datafocused=gridOptions.api.getDisplayedRowAtIndex(rowindex2).data;
+    const { BrowserWindow } = require('electron').remote
+    var fs = require('fs');
+const PDFWindow = require('electron-pdf-browser-window')
+const rootPath = require('electron-root-path').rootPath;
+rp = rootPath.replace(/\\/g,"/");
+
+var chapterNO= datafocused.fasl;
+
+
+//ipcRe
+   
+    
+    
+        // Hide the pdf loader and show pdf container in HTML
+  
+
+
+// Load and render a specific page of the PDF
+
+const win = new BrowserWindow({ 
+    width: 1000, height: 800 }) 
+win.setMenuBarVisibility(false);
+PDFWindow.addSupport(win);
+
+  win.loadURL('file:'+rp+'/sECTIONS/Chapter'+chapterNO+'.pdf');
+
+};
+function myRowClickedHandler(event) {
+      var rowindex2= gridOptions.api.getFocusedCell().rowIndex;
+    var datafocused=gridOptions.api.getDisplayedRowAtIndex(rowindex2).data;
+    document.getElementById("rootname").innerHTML = datafocused.root;
+}
+
+//params=gridOptions.api.gridOptions.api.getFocusedCell();
+
+   // var db = require("./db.js");
+    // db.query("SELECT f.* FROM tariffs f ", (err, rows, fields) => {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    //     data = [];
+    //     
+    //     gridOptions.api.setRowData(data);
+
+
+    //     db.end();
+    // });
+    const ipcRenderer = require('electron').ipcRenderer;
+    const { dialog } = require('electron').remote
+        const print2=document.getElementById('enter2');
+       
+        print2.addEventListener('click', function () {
+            datatoPrint=[];
+            numbers=0
+            var selectedRows = gridOptions.api.getSelectedRows();
+
+if (selectedRows.length>0){
+     
+   
+var selectedRowsString = '';
+var num=1
+selectedRows.forEach( function(y) {         
+        datatoPrint.push({radif:numbers,session:y.fasl, tarrifCode:y.code, persian_desc:y.per_desc,percent:y.tarif_per,english_desc:y.per_eng,nametoroot:y.root});
+numbers+=1;
+    });
+    datatoPrint.forEach(function(obj) {
+  for(var i in obj) { 
+    if(obj[i] === undefined) {
+      obj[i] = '';
+    }
+  }
+});
+
+                                   ipcRenderer.send('print-to-pdf',datatoPrint);
+
+                        //          var gridApi = gridOptions.api;
+
+                        //      setPrinterFriendly(gridApi);
+                        //         alert('hi3');
+                            
+                        //        //   print();
+                            
+                            
+                            
+
+                        //      ipcRenderer.send('print-to-pdf');
+                        //     });
+                        //     function setPrinterFriendly(api) {
+                            
+                        //    var eGridDiv = document.querySelector('#myGrid');
+                        //     eGridDiv.style.width = '';
+                        //       eGridDiv.style.height = '';
+
+                        //   api.setDomLayout('print');
+                        //   alert('hi2');
+         }
+         else{
+            alert('\u0647\u06CC\u062C \u0631\u06A9\u0648\u0631\u062F\u06CC \u0627\u0646\u062A\u062E\u0627\u0628 \u0646\u0634\u062F\u0647 \u0627\u0633\u062A!')
+
+         }               //   console.log();
+
+});
+//     const btnclick3 = document.getElementById('enter');
+//     btnclick3.addEventListener('click', function () {
+//         var selectedRows = gridOptions.api.getSelectedNodes();
+
+// if (selectedRows.length>0){
+     
+// var selectedRowsString = '';
+
+//         const { dialog } = require('electron').remote
+//     const savePath = dialog.showSaveDialogSync({filters: [{
+//       name: 'Excel File',
+//       extensions: ['xlsx']
+//     }]});
+   
+//     var Excel = require('exceljs');
+//     // A new Excel Work Book
+//     var workbook = new Excel.Workbook();
+
+//     // Some information about the Excel Work Book.
+//     workbook.creator = 'GhazyarApp';
+//     workbook.lastModifiedBy = '';
+    
+
+//     // Create a sheet
+//     workbook.removeWorksheet('Ghazyar-Tarrifs');
+//     var sheet = workbook.addWorksheet('Ghazyar-Tarrifs', {pageSetup:{paperSize: 9, orientation:'landscape'}});
+
+//     sheet.columns = [
+        
+//         { header:"\u0631\u062F\u06CC\u0641", key: 'radif' },
+//         { header: "\u0641\u0635\u0644", key: 'session' },
+//         { header: "\u06A9\u062F \u062A\u0639\u0631\u0641\u0647", key: 'tarrifCode' },
+//         { header: "\u0634\u0631\u062D \u062A\u0639\u0631\u0641\u0647", key: 'persian_desc' },
+//         { header: "\u062D\u0642\u0648\u0642 \u0648\u0631\u0648\u062F\u06CC", key: 'percent' },
+//         { header: "\u0646\u0627\u0645 \u0627\u0646\u06AF\u0644\u06CC\u0633\u06CC", key: 'english_desc' },
+//         { header: "        \u0645\u06A9\u0627\u0646 \u062A\u0642\u0631\u06CC\u0628\u06CC \u062F\u0631 \u06A9\u062A\u0627\u0628 \u062A\u0639\u0631\u0641\u0647", key: 'nametoroot' }
+
+
+
+//     ]
+
+//     // Add rows in the above header
+//     var selectedRows = gridOptions.api.getSelectedRows();
+
+   
+//     var selectedRowsString = '';
+//     var num=1
+//     selectedRows.forEach( function(y) {
+
+//         sheet.addRow({radif:num,session:y.fasl, tarrifCode:y.code, persian_desc:y.per_desc,percent:y.tarif_per,english_desc:y.per_eng,nametoroot:y.root });
+// num+=1;
+      
+//     });
+  
+//     // Save Excel on Hard Disk
+//     var pos = savePath.lastIndexOf(".xlsx");
+//     if (savePath!=null && pos==-1 ){
+//     workbook.xlsx.writeFile(savePath+".xlsx")
+//     .then(function() {
+//         // Success Message
+//         alert("\u0641\u0627\u06CC\u0644 \u0627\u06A9\u0633\u0644 \u0628\u0627 \u0645\u0648\u0641\u0642\u06CC\u062A \u0630\u062E\u06CC\u0631\u0647 \u0634\u062F.","\u063A\u0627\u0632\u06CC\u0627\u0631");
+//     });
+    
+    
+//     }
+//     else if (savePath!=null && pos>-1 ){
+//      workbook.xlsx.writeFile(savePath)
+//      .then(function() {
+//         // Success Message
+//         alert("\u0641\u0627\u06CC\u0644 \u0627\u06A9\u0633\u0644 \u0628\u0627 \u0645\u0648\u0641\u0642\u06CC\u062A \u0630\u062E\u06CC\u0631\u0647 \u0634\u062F.","\u063A\u0627\u0632\u06CC\u0627\u0631");
+//     });
+    
+//     }
+
+
+
+// }
+// else{
+//     alert('\u0647\u06CC\u062C \u0631\u06A9\u0648\u0631\u062F\u06CC \u0627\u0646\u062A\u062E\u0627\u0628 \u0646\u0634\u062F\u0647 \u0627\u0633\u062A!')
+// }
+   
+// });
+
+</script>
+</body>
+</head>
+<style>
+     html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+    html {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        overflow: auto;
+    }
+    body {
+        padding: 1rem;
+        overflow: auto;
+    }
+   @font-face {
+       font-family: myfont;
+       src:url('IRANSans.ttf');
+   }
+
+    .ag-header-cell-text {
+        font-family: myfont
+    }
+   #enter{
+    cursor: pointer
+   }
+
+@media print{
+    .no-print{
+        display: none;
+    }
+}
+
+
+</style>
+</html>

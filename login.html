@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+form{resize: none}
+
+
+button {
+  background-color: rgb(80, 135, 206);
+  color: white;
+  margin-left: 33%;
+  cursor: pointer;
+  text-align: center;
+  display:block;
+  width: 33%;
+  font-family: "iranSans";
+
+padding: 7px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.imgcontainer {
+    margin-top:5%;
+  text-align: center;
+ height: 160px;
+}
+
+
+
+/* Change styles for span and cancel button on extra small screens */
+
+
+.header {
+ 
+  margin-left: 50%;
+  text-align: center;
+
+  font-size: 12pt;
+  display: inline;
+  font-family: "iranSans"
+}
+</style>
+</head>
+<body>
+
+
+<form  align="center">
+  <div class="imgcontainer">
+    <img src="download.jpg" alt="Avatar" class="avatar">
+  </div>
+
+
+    <!-- <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+         -->
+         <div class="header" align="center">
+                <h1>&#1576;&#1607; &#1606;&#1585;&#1605; &#1575;&#1601;&#1586;&#1575;&#1585; &#1594;&#1575;&#1586;&#1740;&#1575;&#1585; &#1582;&#1608;&#1588; &#1570;&#1605;&#1583;&#1740;&#1583;</h1>
+               
+              </div>
+               
+    <button align="center" id="login" type="submit">&#1608;&#1585;&#1608;&#1583; &#1576;&#1607; &#1587;&#1575;&#1605;&#1575;&#1606;&#1607;</button>
+    <button align="center" id="exit" type="submit">&#1576;&#1587;&#1578;&#1606; &#1606;&#1585;&#1605; &#1575;&#1601;&#1586;&#1575;&#1585;</button>
+
+    <!-- <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label> -->
+ 
+
+  
+</form>
+
+</body>
+<script>
+     const ipcRenderer = require('electron').ipcRenderer;
+    
+ 
+const db = require('electron-db');
+ // This will save the database in the same directory as the application.
+ const path = require('path');
+ const location2 = path.join(__dirname, '')
+  
+
+const btnclick = document.getElementById('login');
+const btnclick2=document.getElementById('exit');
+btnclick.addEventListener('click', function () {
+  var arg = "login";
+
+  
+  //send the info to main process . we can pass any arguments as second param.
+  ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+});
+btnclick2.addEventListener('click', function () {
+  var arg = "exit";
+
+  //send the info to main process . we can pass any arguments as second param.
+  ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+});
+</script>
+</html>

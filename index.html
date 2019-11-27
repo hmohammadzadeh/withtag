@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<script>
+if (typeof module === 'object') {window.module = module; module = undefined;}
+</script>
+
+
+<script src="./node_modules/jquery/dist/jquery.min.js"></script>    
+<script src="./node_modules/jquery/dist/jquery.maphilight.js"></script>    
+
+
+<script>if (window.module) module = window.module;</script>
+<script>$(function() {
+    $('.map').maphilight();
+});</script>
+<head>
+  
+  <meta charset="utf-8">
+  <link rel="stylesheet" href= "./W3.css">
+</head>
+<body >
+    <div class="img_wrp">
+
+<!-- <body background="import-trade-finance.jpg" style="background-repeat: no-repeat;background-size:800px 700px" usemap="#planetmap"> -->
+<img id='imageme'
+src="svg.svg" usemap="#planetmap"class="map" >
+<img  id="close2" onclick="closed()" class="close"  src="close.png"   >
+<img class="covered" onclick="helpme()" src="helpofapp.png"   >
+<img id="minimize" onclick="minimized()" class="minimize"  src="minimize.png"   >
+
+</div>
+
+  <map name="planetmap" >
+    <area  id="software" coords="171,326,110" shape="circle" >  
+    <area  id="tarrifs" coords="269,110,31" shape="circle" >  
+    <area  id="regulations" coords="382,217,31" shape="circle" >  
+    <area  id="aboutUs" coords="409,326,31" shape="circle" >  
+    <area  id="gomrok" coords="382,435,31" shape="circle" >  
+    <area  id="explantorynotes" coords="270,542,31" shape="circle" >  
+    <area  id="HELP" coords="25,626,17" shape="circle" >  
+
+
+  </map>
+
+  <!-- Three buttons in a group -->
+  <!-- <div id="block_container2" align="center"> -->
+  <!-- <div class="row" align="center">
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+        <img id="regulation" src="regulation.jpg" alt="Alps" >
+        <p> &#1605;&#1602;&#1585;&#1585;&#1575;&#1578; &#1608;&#1575;&#1585;&#1583;&#1575;&#1578; &#1608;
+          &#1589;&#1575;&#1583;&#1585;&#1575;&#1578;</p>
+      </div>
+    </div>
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+        <img id="enter" src="tarif.PNG" alt="Alps" >
+        <p>&#1580;&#1587;&#1578;&#1580;&#1608;&#1740; &#1578;&#1593;&#1585;&#1601;&#1607;</p>
+      </div>
+    </div>
+
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+
+        <img id="HelpOfAPP2" src="desc.png" alt="Alps" >
+        <p>&#x6CC;&#x627;&#x62F;&#x62F;&#x627;&#x634;&#x62A; &#x647;&#x627;&#x6CC; &#x62A;&#x648;&#x636;&#x6CC;&#x62D;&#x6CC;</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2" align="center">
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+        <img id="callUs" src="call.png" alt="Alps" >
+        <p>&#1578;&#1605;&#1575;&#1587; &#1576;&#1575; &#1605;&#1575;</p>
+      </div>
+    </div>
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+        <img id="aboutUs" src="download.jpg" alt="Alps" >
+        <p>&#1576;&#1575;&#1586;&#1585;&#1711;&#1575;&#1606;&#1740; &#1594;&#1575;&#1586;&#1740;&#1575;&#1606;&#1740;</p>
+      </div>
+    </div>
+
+
+    <div class="column" align="center">
+      <div class="card" align="center">
+
+        <img id="HelpOfAPP" src="help.PNG" alt="Alps" >
+        <p>&#1585;&#1575;&#1607;&#1606;&#1605;&#1575;</p>
+      </div>
+    </div>
+  </div> -->
+
+</body>
+  <script>
+
+    // include the ipc module to communicate with main process.
+   const ipcRenderer = require('electron').ipcRenderer;
+   
+     function closed(){
+     
+     var arg = "exit";
+  //send the info to main process . we can pass any arguments as second param.
+       ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+   }
+   function minimized(){
+    const { remote } = require('electron')
+    remote.BrowserWindow.getFocusedWindow().minimize();
+   }
+   const btnclick = document.getElementById('tarrifs');
+    btnclick.addEventListener('click', function () {
+   var arg = "secondparam";
+
+      //send the info to main process . we can pass any arguments as second param.
+    ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+  });
+
+
+ const btnclick2 = document.getElementById('aboutUs');
+ btnclick2.addEventListener('click', function () {
+
+  document.getElementById("aboutUs").style.color = "blue";
+  var arg = "op";
+
+//   //send the info to main process . we can pass any arguments as second param.
+   ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+ });
+
+ //const btnclick4 = document.getElementById('regulation');
+//btnclick4.addEventListener('click', function () {
+  // var arg = "regs";
+
+   //send the info to main process . we can pass any arguments as second param.
+    /////  ipcRenderer.send("btnclick", arg); // ipcRender.send will pass the information to main process
+
+//});
+function helpme(){
+  const { BrowserWindow } = require('electron').remote
+  const PDFWindow = require('electron-pdf-browser-window')
+ const rootPath = require('electron-root-path').rootPath;
+rp = rootPath.replace(/\\/g,"/");
+
+
+
+
+
+ const win = new BrowserWindow({ width: 800, height: 600 }) 
+ win.setMenuBarVisibility(false);
+  PDFWindow.addSupport(win);
+
+ win.loadURL('file:'+rp+'/Help.pdf');
+
+}
+
+  </script>
+
+  
+</body>
+
+ <style>
+ 
+  /* #block_container > div {
+    display: inline-block;
+    align-items: center;
+    text-align:center;
+   margin-top: 1cm;
+   flex-wrap: nowrap;
+
+} */
+
+
+  body {
+    
+   
+    font-family: Arial, Helvetica, sans-serif;
+   
+  }
+  .covered{
+		bottom:2px;
+		left:2px;
+		width:40px;
+		height:40px;
+		position:absolute;
+		-webkit-transition:-webkit-transform .25s, opacity .25s;
+          -moz-transition:-moz-transform .25s, opacity .25s;
+                   transition: transform .25s, opacity .25s;
+		opacity:1;
+    border-radius: 50%;
+
+	}
+  .close{
+    display: flex;
+		top:7px;
+		right:5px;
+		width:15px;
+		height:15px;
+		position: fixed;;
+		-webkit-transition:-webkit-transform .25s, opacity .25s;
+          -moz-transition:-moz-transform .25s, opacity .25s;
+                   transition: transform .25s, opacity .25s;
+		opacity:1;
+    border-radius: 50%;
+	}
+  .minimize{
+    display: flex;
+    top: 0px;
+		right:15px;
+		width:30px;
+		height:30px;
+		position: fixed;;
+		-webkit-transition:-webkit-transform .25s, opacity .25s;
+          -moz-transition:-moz-transform .25s, opacity .25s;
+                   transition: transform .25s, opacity .25s;
+		opacity:1;
+    border-radius: 50%;
+	}
+  .minimize:hover{
+		-webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+		opacity:1;
+	}
+  .covered:hover{
+		-webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+		opacity:1;
+    
+	}
+  .close:hover{
+		-webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+		opacity:1;
+	}
+  div p {
+    font-family: 'iranSans';
+    font-size: 12pt;
+  }
+
+  .img_wrp {
+  display: inline-block;
+  position: fixed;
+}
+
+  
+
+ </style>
+</html>
