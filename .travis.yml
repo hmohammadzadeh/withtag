@@ -62,12 +62,9 @@ deploy:
  
   
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "FILE TO UPLOAD"
-  draft: true
+  api_key: "CfYEwvYm22rabYXKeRWkrA"
   skip_cleanup: true
-  on:
-    branch: prod
+
     
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
