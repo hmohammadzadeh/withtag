@@ -6,13 +6,20 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pack": "build --dir",
-    "dist": "build"
+    "release": "electron-builder",
+    "test": "echo success"
   },
+  "repository": "https://github.com/hmohammadzadeh/ghaz.gits",
+  "keywords": [
+    "electron",
+    "ci",
+    "travis",
+    "tutorial",
+    "demo"
+  ],
   "build": {
-    "appId": "yourappid",
-    "category": "your.app.category.type",
+    "appId": "tld.exampledomain.app",
+    "publish": "github",
     "dmg": {
       "contents": [
         {
@@ -27,18 +34,14 @@
         }
       ]
     },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ]
+    "appImage": {
+      "license": "LICENSE"
     },
-    "win": {
-      "target": "squirrel",
-      "icon": "build/icon.ico"
+    "nsis": {
+      "createDesktopShortcut": "always",
+      "license": "LICENSE"
     }
-  }
-  ,
+  },
   "dependencies": {
     "ag-grid-community": "^21.1.1",
     "convert-excel-to-json": "^1.6.1",
