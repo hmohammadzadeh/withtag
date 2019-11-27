@@ -12,7 +12,7 @@ matrix:
     - os: osx
       osx_image: xcode10.2
       language: node_js
-      node_js: "11.6.0"
+      node_js: "10.16.0"
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
@@ -59,8 +59,12 @@ script:
     fi
 # only deploy to github on a merge to the prod branch
 deploy:
-  provider: script
-  script: bash deploy.travis.sh
+ 
+  
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "FILE TO UPLOAD"
+  draft: true
   skip_cleanup: true
   on:
     branch: prod
