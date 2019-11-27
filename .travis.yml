@@ -69,11 +69,12 @@ deploy:
   deploy:
   provider: releases
   user: "hmohammadzadeh"
-  
+
   file_glob: true
   password: "realoption123"
   skip_cleanup: true
   on:
+    
     tags: true
     
 before_cache:
