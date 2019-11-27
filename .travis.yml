@@ -58,6 +58,12 @@ script:
       yarn test
     fi
 # only deploy to github on a merge to the prod branch
+ before_deploy:
+      # Set up git user name and tag this commit
+      - git config --local user.name "hmohammadzadeh"
+      - git config --local user.email "h.mohammadzadeh@live.com"
+      - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+      - git tag $TRAVIS_TAG
 deploy:
  
   deploy:
@@ -74,7 +80,3 @@ before_cache:
 
 # only run this script on pull requests and merges into 
 # the 'master' and 'prod' branches
-branches:
-  only:
-  - master
-  - prod
