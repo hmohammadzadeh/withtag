@@ -60,11 +60,14 @@ script:
 # only deploy to github on a merge to the prod branch
 deploy:
  
-  
+  deploy:
   provider: releases
-  api_key: "CfYEwvYm22rabYXKeRWkrA"
+  user: "hmohammadzadeh"
+  password: "realoption123"
   skip_cleanup: true
-
+ 
+  on:
+    tags: true
     
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
